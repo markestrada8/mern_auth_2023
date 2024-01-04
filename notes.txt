@@ -1,0 +1,5 @@
+**POST /api/users** Register
+**POST /api/users/auth** Authenticate / get token
+**POST /api/users/logout** Logout user / destroy cookie
+**GET /api/users/profile** Get user profile
+**PUT /api/users/profile** Update user profile
