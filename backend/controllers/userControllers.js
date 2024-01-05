@@ -3,7 +3,7 @@ import User from '../models/userModel.js'
 import generateToken from '../utils/generateToken.js'
 
 // @desc Auth user/set token
-// route POST /api/users/auth
+// @route POST /api/users/auth
 // @access Public
 const authenticateUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
@@ -29,7 +29,7 @@ const authenticateUser = asyncHandler(async (req, res) => {
 })
 
 // @desc Register new user
-// route POST /api/users
+// @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body
@@ -59,7 +59,7 @@ const registerUser = asyncHandler(async (req, res) => {
 })
 
 // @desc Logout user
-// route POST /api/users/logout
+// @route POST /api/users/logout
 // @access Public
 const logoutUser = asyncHandler(async (req, res) => {
   // Wipe cookie from returning response object...
@@ -71,7 +71,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 })
 
 // @desc Get user profile
-// route GET /api/users/profile
+// @route GET /api/users/profile
 // @access Private
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = {
@@ -83,7 +83,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 })
 
 // @desc Update user profile
-// route PUT /api/users
+// @route PUT /api/users
 // @access Public
 const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id)
@@ -97,7 +97,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     }
 
     const updatedUser = await user.save()
-    res.status(200).json({
+
+    res.json({
       id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email
